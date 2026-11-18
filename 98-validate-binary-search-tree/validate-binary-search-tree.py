@@ -6,20 +6,19 @@
 #         self.right = right
 class Solution:
     def isValidBST(self, root: TreeNode | None) -> bool:
-        res = []
-        def dfs(root):
-            nonlocal res
+        def is_valid(root, low = float('-inf') , high = float('inf')):
             if not root:
-                return
+                return True
 
-            dfs(root.left)
-            res.append(root.val)
-            dfs(root.right)
-
-        dfs(root)
-        i = 0
-        while i + 1 < len(res):
-            if res[i] >= res[i+1]:
+            if not (low < root.val < high):
                 return False
-            i += 1
-        return True
+
+            return is_valid(root.left, low, root.val) and is_valid(root.right, root.val, high)
+
+        return is_valid(root)
+
+
+
+            
+
+            
