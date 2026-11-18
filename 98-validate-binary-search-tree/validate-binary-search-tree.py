@@ -7,7 +7,7 @@
 class Solution:
     def isValidBST(self, root: TreeNode | None) -> bool:
         def is_valid(root, low = float('-inf') , high = float('inf')):
-            if not root:
+            if root is None:
                 return True
 
             if not (low < root.val < high):
