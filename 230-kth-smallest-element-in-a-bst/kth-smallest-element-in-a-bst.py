@@ -18,6 +18,7 @@ class Solution:
             k -= 1
             if k == 0:
                 ans[0] = root.val
+                return
 
             dfs(root.right)
 
